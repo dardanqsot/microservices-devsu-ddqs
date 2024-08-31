@@ -22,7 +22,7 @@ public class ClientServiceImpl extends CRUDImpl<Client, Integer> implements Clie
     @Override
     public Client findByIdClientAndEnabled(Integer id) {
         Client client = repo.findClientByIdClientAndEnabled(id, Constants.ENABLED)
-                .orElseThrow(NotFoundException.supplier(Constants.NOT_FOUND));
+                .orElseThrow(NotFoundException.supplier(Constants.NOT_FOUND + id));
         return client;
     }
 }
