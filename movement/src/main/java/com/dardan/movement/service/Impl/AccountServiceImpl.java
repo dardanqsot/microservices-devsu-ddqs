@@ -24,7 +24,7 @@ public class AccountServiceImpl extends CRUDImpl<Account, Integer> implements Ac
     @Override
     public Account findAccountByIdAccountAndEnabled(Integer id) {
         Account account = repo.findAccountByIdAccountAndEnabled(id, Constants.ENABLED)
-                .orElseThrow(NotFoundException.supplier(Constants.NOT_FOUND));
+                .orElseThrow(NotFoundException.supplier(Constants.NOT_FOUND_ACCOUNT));
         return account;
     }
 

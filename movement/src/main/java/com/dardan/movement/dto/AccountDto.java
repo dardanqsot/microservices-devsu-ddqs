@@ -22,5 +22,7 @@ public class AccountDto {
 
     private BigDecimal initialBalance;
 
+    private BigDecimal balance;
+
     private Boolean status;
 }

@@ -38,6 +38,7 @@ public class AccountController {
 
     @PostMapping
     public ResponseEntity<ResponseDto<Void>> create(@Valid @RequestBody AccountDto accountDto) {
+        accountDto.setBalance(accountDto.getInitialBalance());
         service.createAccount(convertToEntity(accountDto));
         return new ResponseEntity<>(ResponseDto.successResponse(null), HttpStatus.CREATED);
     }

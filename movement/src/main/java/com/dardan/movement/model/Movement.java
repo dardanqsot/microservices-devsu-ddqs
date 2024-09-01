@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +19,7 @@ public class Movement {
     private Integer idMovement;
 
     @Column(nullable = false)
-    private LocalDateTime movementDate;
+    private LocalDate movementDate;
 
     @Column(nullable = false)
     private String movementType;
@@ -29,6 +29,13 @@ public class Movement {
 
     @Column(nullable = false)
     private BigDecimal balance;
+
+    @Column(name = "id_account")
+    private Integer idAccount;
+
+    @ManyToOne
+    @JoinColumn(name = "id_account",  referencedColumnName = "id_account",insertable = false, updatable = false, foreignKey = @ForeignKey(name = "FK_ACCOUNT"))
+    private Account account;
 
     @Column(nullable = false)
     private boolean enabled = true;

@@ -28,7 +28,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseDto> handleAllException(Exception ex, WebRequest request){
-        System.out.println("ACA 1");
         ResponseDto err = new ResponseDto(ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(err, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -47,7 +46,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         List<String> errorMessages = new ArrayList<>();
-        System.out.println("ERRRO ACA");
         for (FieldError error : ex.getBindingResult().getFieldErrors()) {
             errorMessages.add(error.getDefaultMessage());
         }
@@ -57,7 +55,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ResponseDto> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex, WebRequest request) {
-        System.out.println("ACA 2");
         ResponseDto err = new ResponseDto(
                 "El valor '" + ex.getValue() + "' no se puede convertir al tipo requerido: " + ex.getRequiredType().getSimpleName(),
                 request.getDescription(false)
