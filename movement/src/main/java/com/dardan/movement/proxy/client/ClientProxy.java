@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name="client", url = "http://localhost:8080/v1/")
+@FeignClient(name="client-service")
 public interface ClientProxy {
 
-    @GetMapping("/client/{id}")
+    @GetMapping("/v1/client/{id}")
     ResponseDto<ClientDto> getClient(@PathVariable("id") Integer id);
 
 }

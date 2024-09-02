@@ -6,7 +6,16 @@ application:
 server:
   port: 8080
 
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:9090/eureka
+
 spring:
+  application:
+    name: client-service
   jpa:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -15,9 +24,9 @@ spring:
       ddl-auto: update
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost/ddqs_devsu_pt
+    url: jdbc:postgresql://ddqs-devsu-pt.postgres.database.azure.com/ddqs_devsu_pt
     username: postgres
-    password: postgres
+    password: Qwerty*123
 
 springdoc:
   api-docs:
