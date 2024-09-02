@@ -20,13 +20,18 @@ public class Account {
     @Column( name = "id_account")
     private Integer idAccount;
 
+    @Column(nullable = false)
     private Integer idClient;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     private String accountNumber;
 
-    @Column(nullable = false)
-    private String accountType;
+    @Column(name = "id_account_type", nullable = false)
+    private Integer idAccountType;
+
+    @ManyToOne
+    @JoinColumn(name = "id_account_type",  referencedColumnName = "id_account_type",insertable = false, updatable = false, foreignKey = @ForeignKey(name = "FK_ACCOUNT_TYPE"))
+    private AccountType accountType;
 
     @Column(nullable = false)
     private BigDecimal initialBalance;

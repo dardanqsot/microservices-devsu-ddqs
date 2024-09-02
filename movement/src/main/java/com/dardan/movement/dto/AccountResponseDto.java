@@ -1,6 +1,6 @@
 package com.dardan.movement.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -8,28 +8,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MovementDto {
+public class AccountResponseDto {
 
-    private Integer idMovement;
-
-    @NotNull
     private Integer idAccount;
 
     @NotNull
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate movementDate;
+    private Integer idClient;
 
     @NotNull
-    private Integer idMovementType;
+    private String accountNumber;
 
     @NotNull
-    private BigDecimal value;
+    private String accountType;
+
+    @NotNull
+    private BigDecimal initialBalance;
 
     private BigDecimal balance;
+
+    @NotNull
+    private Boolean status;
 }

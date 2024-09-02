@@ -12,7 +12,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost/ddqs_devsu_pt

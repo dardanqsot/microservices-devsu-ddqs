@@ -2,6 +2,7 @@ package com.dardan.movement.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -10,19 +11,24 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AccountDto {
+public class AccountRequestDto {
 
     private Integer idAccount;
 
+    @NotNull
     private Integer idClient;
 
+    @NotNull
     private String accountNumber;
 
-    private String accountType;
+    @NotNull
+    private Integer idAccountType;
 
+    @NotNull
     private BigDecimal initialBalance;
 
     private BigDecimal balance;
 
+    @NotNull
     private Boolean status;
 }

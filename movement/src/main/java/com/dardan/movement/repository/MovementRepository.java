@@ -12,9 +12,7 @@ public interface MovementRepository extends GenericRepo<Movement, Integer> {
 
     Optional<Movement> findMovementByIdMovementAndEnabled(Integer id, Boolean enabled);
 
-    Optional<Movement> findByIdMovementAndIdAccountAndEnabled(Integer idMovement, Integer idAccount, Boolean enabled);
-
-    @Query("SELECT m FROM Movement m WHERE m.account.idClient = :idClient AND m.movementDate between :fromDate AND :toDate")
+    @Query("SELECT m FROM Movement m WHERE m.account.idClient = :idClient AND m.movementDate between :fromDate AND :toDate AND m.enabled = true")
     List<Movement> findAllByIdClientAndDates(@Param("idClient") Integer idClient, @Param("fromDate") LocalDate fromDate, @Param("toDate") LocalDate toDate);
 
     @Query("SELECT m FROM Movement m WHERE m.account.idClient = :idClient")

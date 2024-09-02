@@ -68,6 +68,12 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(BadRequestApiException.class)
+    public ResponseEntity<ResponseDto> handleBadRequestApiException(BadRequestApiException ex, WebRequest request){
+        ResponseDto err = new ResponseDto(ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(FeignException.class)
     public ResponseEntity<ResponseDto> handleFeignException(FeignException ex, WebRequest request) {
         String errorMessage = "Ocurrió un error al comunicarse con el servicio externo.";

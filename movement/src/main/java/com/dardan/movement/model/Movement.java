@@ -21,8 +21,12 @@ public class Movement {
     @Column(nullable = false)
     private LocalDate movementDate;
 
-    @Column(nullable = false)
-    private String movementType;
+    @Column(name = "id_movement_type", nullable = false)
+    private Integer idMovementType;
+
+    @ManyToOne
+    @JoinColumn(name = "id_movement_type",  referencedColumnName = "id_movement_type",insertable = false, updatable = false, foreignKey = @ForeignKey(name = "FK_MOVEMENT_TYPE"))
+    private MovementType movementType;
 
     @Column(nullable = false)
     private BigDecimal value;

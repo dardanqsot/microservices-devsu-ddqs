@@ -1,6 +1,7 @@
 package com.dardan.movement.controller;
 
 import com.dardan.movement.dto.MovementDto;
+import com.dardan.movement.dto.MovementUpdateDto;
 import com.dardan.movement.dto.ReportDto;
 import com.dardan.movement.dto.ResponseDto;
 import com.dardan.movement.model.Movement;
@@ -46,9 +47,9 @@ public class MovementController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ResponseDto<Void>> update(@Valid @RequestBody MovementDto movementDto, @PathVariable Integer id) {
+    public ResponseEntity<ResponseDto<Void>> update(@Valid @RequestBody MovementUpdateDto movementDto, @PathVariable Integer id) {
         movementDto.setIdMovement(id);
-        Movement movement = service.updateMovement(convertToEntity(movementDto));
+        service.updateMovement(mapper.map(movementDto, Movement.class));
         return new ResponseEntity<>(ResponseDto.successResponse(null), HttpStatus.OK);
     }
 

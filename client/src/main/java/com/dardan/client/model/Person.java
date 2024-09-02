@@ -1,9 +1,14 @@
 package com.dardan.client.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@MappedSuperclass
 public class Person {
 
     @Column(nullable = false)

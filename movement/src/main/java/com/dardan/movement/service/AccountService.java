@@ -8,5 +8,5 @@ public interface AccountService extends CRUD<Account, Integer> {
 
     Account createAccount(Account account);
 
-    Account updateAccount(Account account) throws Exception;
+    Account updateAccount(Account account);
 }

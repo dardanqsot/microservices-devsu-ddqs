@@ -10,6 +10,8 @@ import com.dardan.movement.util.Constants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 @RequiredArgsConstructor
 public class AccountServiceImpl extends CRUDImpl<Account, Integer> implements AccountService {
@@ -35,9 +37,21 @@ public class AccountServiceImpl extends CRUDImpl<Account, Integer> implements Ac
     }
 
     @Override
-    public Account updateAccount(Account account) throws Exception {
-        clientProxy.getClient(account.getIdClient()).getData();
-        this.update(account, account.getIdAccount());
-        return save(account);
+    public Account updateAccount(Account account) {
+        Account accountUpdate = repo.findAccountByIdAccountAndEnabled(account.getIdAccount(), Constants.ENABLED)
+                .orElseThrow(NotFoundException.supplier(Constants.NOT_FOUND_ACCOUNT));
+        if(Objects.nonNull(account.getIdClient())){
+            clientProxy.getClient(account.getIdClient()).getData();
+            accountUpdate.setIdClient(account.getIdClient());
+        }
+
+        if(Objects.nonNull(account.getIdAccountType())){
+            accountUpdate.setIdAccountType(account.getIdAccountType());
+        }
+
+        if(Objects.nonNull(account.getStatus())){
+            accountUpdate.setStatus(account.getStatus());
+        }
+        return save(accountUpdate);
     }
 }
