@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "01470f82-1957-4c2d-a322-0e9d33bea20b",
+		"name": "DevSup-PT-DarwinQuispe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "7697821"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "create Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Darwin Quispe\",\r\n    \"gender\": \"Masculino\",\r\n    \"age\": 30,\r\n    \"identification\": \"12345670\",\r\n    \"address\": \"Arequipa, Perú\",\r\n    \"telephone\": \"+51 93057519615\",\r\n    \"password\": \"123456\",\r\n    \"state\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/v1/client"
+					},
+					"response": []
+				},
+				{
+					"name": "update Client",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Darwin Quispe Modificado\",\r\n    \"gender\": \"Masculino\",\r\n    \"age\": 30,\r\n    \"identification\": \"12345678\",\r\n    \"address\": \"Arequipa, Perú\",\r\n    \"telephone\": \"+51 93057519615\",\r\n    \"password\": \"123456\",\r\n    \"state\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/v1/client/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetById Client",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/v1/client/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetList Client",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Darwin Quispe\",\r\n    \"gender\": \"Masculino\",\r\n    \"age\": 30,\r\n    \"identification\": \"12345678\",\r\n    \"address\": \"Arequipa, Perú\",\r\n    \"telephone\": \"+51 93057519615\",\r\n    \"password\": \"123456\",\r\n    \"state\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/v1/client"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Darwin Quispe\",\r\n    \"gender\": \"Masculino\",\r\n    \"age\": 30,\r\n    \"identification\": \"12345678\",\r\n    \"address\": \"Arequipa, Perú\",\r\n    \"telephone\": \"+51 93057519615\",\r\n    \"password\": \"123456\",\r\n    \"state\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/v1/client/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "create Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": 1,\r\n    \"idAccountType\": 2,\r\n    \"accountNumber\": \"478759\",\r\n    \"initialBalance\": 45.5,\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8081/v1/account"
+					},
+					"response": []
+				},
+				{
+					"name": "update Account",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": 1,\r\n    \"idAccountType\": 2,\r\n    \"status\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8081/v1/account/2"
+					},
+					"response": []
+				},
+				{
+					"name": "GetById Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8081/v1/account/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetList Account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Darwin Quispe\",\r\n    \"gender\": \"Masculino\",\r\n    \"age\": 30,\r\n    \"identification\": \"12345678\",\r\n    \"address\": \"Arequipa, Perú\",\r\n    \"telephone\": \"+51 93057519615\",\r\n    \"password\": \"123456\",\r\n    \"state\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8081/v1/account"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Darwin Quispe\",\r\n    \"gender\": \"Masculino\",\r\n    \"age\": 30,\r\n    \"identification\": \"12345678\",\r\n    \"address\": \"Arequipa, Perú\",\r\n    \"telephone\": \"+51 93057519615\",\r\n    \"password\": \"123456\",\r\n    \"state\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8081/v1/account/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movement",
+			"item": [
+				{
+					"name": "create Movement",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movementDate\": \"31/08/2024\",\r\n    \"idAccount\": 1,\r\n    \"idMovementType\": 2,\r\n    \"value\": 15.00\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8081/v1/movement"
+					},
+					"response": []
+				},
+				{
+					"name": "update Movement",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movementDate\": \"31/08/2024\",\r\n    \"idMovementType\": 2,\r\n    \"value\": 5.00\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8081/v1/movement/9"
+					},
+					"response": []
+				},
+				{
+					"name": "GetById Movement",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8081/v1/movement/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetList Movement",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Darwin Quispe\",\r\n    \"gender\": \"Masculino\",\r\n    \"age\": 30,\r\n    \"identification\": \"12345678\",\r\n    \"address\": \"Arequipa, Perú\",\r\n    \"telephone\": \"+51 93057519615\",\r\n    \"password\": \"123456\",\r\n    \"state\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8081/v1/movement"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movement",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8081/v1/movement/14"
+					},
+					"response": []
+				},
+				{
+					"name": "Reportes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/v1/movement/reportes?idClient=1&fromDate=20/07/2024&toDate=03/09/2024",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"movement",
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "idClient",
+									"value": "1"
+								},
+								{
+									"key": "fromDate",
+									"value": "20/07/2024"
+								},
+								{
+									"key": "toDate",
+									"value": "03/09/2024"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cloud Gateway",
+			"item": [
+				{
+					"name": "Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:9091/api/clientes/v1/client"
+					},
+					"response": []
+				},
+				{
+					"name": "Cuentas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:9091/api/movimientos/v1/account"
+					},
+					"response": []
+				},
+				{
+					"name": "Reporte",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9091/api/movimientos/v1/movement/reportes?idClient=1&fromDate=20/07/2024&toDate=03/09/2024",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"movimientos",
+								"v1",
+								"movement",
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "idClient",
+									"value": "1"
+								},
+								{
+									"key": "fromDate",
+									"value": "20/07/2024"
+								},
+								{
+									"key": "toDate",
+									"value": "03/09/2024"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
