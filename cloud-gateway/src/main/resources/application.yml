@@ -13,6 +13,27 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:9090/eureka
 
+resilience4j:
+  circuitbreaker:
+    configs:
+      circuitBreakerClient:
+        slidingWindowSize: 10
+        failureRateThreshold: 5
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 10
+        slowCallDurationThreshold: 200ms
+        slowCallRateThreshold: 50
+    instances:
+      client-cb:
+        base-config: circuitBreakerClient
+  timelimiter:
+    configs:
+      timelimiterClient:
+        timeoutDuration: 150ms
+    instances:
+      client-cb:
+        base-config: timelimiterClient
+
 spring:
   application:
     name: cloud-gateway
@@ -25,6 +46,10 @@ spring:
             - Path=/api/clientes/**
           filters:
             - StripPrefix=2
+            - name: CircuitBreaker
+              args:
+                name: client-cb
+                fallbackUri: forward:/api/clientes/v1/client
         - id: movement-service
           uri: lb://movement-service
           predicates:
