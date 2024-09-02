@@ -10,6 +10,13 @@ Utiliza una BD Postgresql deployada en Azure, ya con la conexion lista en los pr
 
 Contiene un archivo  **_DevSup-PT-DarwinQuispe.postman_collection.json**_ el cual es una colección de Postman con las apis a consumir segun indicaciones de la prueba, y con data dummy necesaria, en la documentación swagger se podra tener el detalle de lo que se requiere para cada servicios, así como la respuesta del mismo.
 
+Los proyectos necesarios para correr el proyecto pueden ser clonados desde este repositorio o mediante el uso de las imagenes subidas a dockerHub:
+https://hub.docker.com/u/dardan09
+
+- dardan09/ddqs-devsu-client
+- dardan09/ddqs-devsu-movement
+- dardan09/ddqs-devsu-discovery-server
+- dardan09/ddqs-devsu-cloud-gateway
 
 Apis principales
 ## Servicio 1: Client
@@ -94,7 +101,7 @@ Respuesta esperada:
 Este servicio permit mostrar los reporte de movimientos
 
 ### Ruta de Consumo
-POST:  localhost:8081/v1/account
+POST:  localhost:8081/v1/movement/reportes?idClient=1&fromDate=20/07/2024&toDate=03/09/2024
 
 Payload:
 ```json
@@ -111,26 +118,39 @@ Respuesta esperada:
 ```json
 {
     "mensaje": "Operación Exitosa",
-    "data": null
+    "data": [
+        {
+            "idMovement": 6,
+            "idAccount": 1,
+            "idClient": 1,
+            "fecha": "31/08/2024",
+            "cliente": "Darwin Quispe",
+            "numeroCuenta": "478759",
+            "tipo": "Corriente",
+            "saldoInicial": 45.50,
+            "estado": true,
+            "tipoMovimiento": "Deposito",
+            "movimiento": 15.00,
+            "saldoDisponible": 135.50
+        },
+        {
+            "idMovement": 5,
+            "idAccount": 1,
+            "idClient": 1,
+            "fecha": "31/08/2024",
+            "cliente": "Darwin Quispe",
+            "numeroCuenta": "478759",
+            "tipo": "Corriente",
+            "saldoInicial": 45.50,
+            "estado": true,
+            "tipoMovimiento": "Deposito",
+            "movimiento": 15.00,
+            "saldoDisponible": 120.50
+        }
+    ]
 }
 ```
-## Servicios complementarios: List, ObtenerPorUUI, Actualizar y Eliminar
-Estos servicios complementan el controller de User, todos basados en UUID en cuanto a busquedas individuales, y el eliminar basado en el campo isActive hará un borrado lógico
 
-### Rutas de Consumo cion ejemplo
-Requieren token 
-
-GET:  
-- localhost:8080/v1/user
-
-GET: 
-- localhost:8080/v1/user/49f81ff0-f5a4-4388-863c-b94f6add5437
-  
-PATCH:
-- localhost:8080/v1/user/49f81ff0-f5a4-4388-863c-b94f6add5437
-  
-DELETE: 
-- localhost:8080/v1/user/49f81ff0-f5a4-4388-863c-b94f6add5437
 
 ## Ejecución del Proyecto
 
