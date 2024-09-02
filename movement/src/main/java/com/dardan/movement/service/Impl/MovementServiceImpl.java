@@ -15,7 +15,6 @@ import com.dardan.movement.service.MovementService;
 import com.dardan.movement.util.Constants;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

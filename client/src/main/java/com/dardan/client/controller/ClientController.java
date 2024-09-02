@@ -4,6 +4,11 @@ import com.dardan.client.dto.ClientDto;
 import com.dardan.client.dto.ResponseDto;
 import com.dardan.client.model.Client;
 import com.dardan.client.service.ClientService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.servers.Server;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -16,6 +21,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/client")
 @RequiredArgsConstructor
+@OpenAPIDefinition(
+        info = @Info(
+                title = "Client Service Microservice",
+                version = "0.0.1",
+                description = "Módulo para la gestión de clientes",
+                contact = @Contact(
+                        name = "Dardan",
+                        url = "http://github.com/dardanqsot",
+                        email = "quispesotodaniel@gmail.com"
+                )
+        ),
+        servers = { @Server(url = "http:localhost:8080")},
+        tags = @Tag(name = "Clientes", description = "Microservicio para la gestión de clientes")
+)
 public class ClientController {
 
     private final ModelMapper mapper;

@@ -18,3 +18,11 @@ spring:
     url: jdbc:postgresql://localhost/ddqs_devsu_pt
     username: postgres
     password: postgres
+
+springdoc:
+  api-docs:
+    path: /api-docs
+    enabled: true
+  swagger-ui:
+    path: swagger-ui.html
+    enabled: true
